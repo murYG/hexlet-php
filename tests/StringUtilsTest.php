@@ -1,5 +1,8 @@
 <?php
 
+use Webmozart\Assert\Assert;
+use function StringUtils\capitalize;
+
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoloadPath1)) {
@@ -8,15 +11,10 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$tests[] = ['hello', 'Hello'];
-$tests[] = ['', ''];
-$tests[] = ['привет', 'Привет'];
-
-foreach ($tests as $test) {
-	$result = StringUtils\capitalize($test[0]);
-	if ($result !== $test[1]) {
-		throw new \Exception("Функция работает неверно!\nОжидание: $test[1]\nРеальность: $result\n");
-	}
-}
-
-echo "Все тесты пройдены!\n";
+// В строке ниже eq означает equal
+Assert::eq(capitalize(''), '');
+// Первый параметр actual – то, что пришло
+// Второй параметр expected – то, что ожидает тест
+// Правильный порядок аргументов имеет большое значение при анализе ошибки
+Assert::eq(capitalize('hello'), 'Hello');
+Assert::eq(capitalize('привет'), 'Привет');
