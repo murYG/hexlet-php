@@ -1,16 +1,30 @@
 {
     "name": "loth/hexlet-php",
+    "description": "homeworks",
     "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Loth\\HexletPhp\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "murYG",
             "email": "mur@jinr.ru"
         }
     ],
-    "require": {}
+ 	"license": ["proprietary"],
+	"autoload": {
+        "psr-4": {
+            "Loth\\HexletPhp\\": "src/"
+        },
+        "files": [
+            "src/Runner.php",
+            "src/StringUtils.php"
+        ]
+    },
+    "require": {
+        "illuminate/collections": "^12.28"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+	"scripts": {
+		"phpcs": "phpcs"
+	}
 }
